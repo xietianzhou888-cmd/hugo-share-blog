@@ -1,0 +1,39 @@
+backend:
+  name: github
+  repo: xietianzhou888-cmd/hugo-share-blog
+  branch: main
+  auth_endpoint: api/auth
+  base_url: https://api.github.com
+
+local_backend: true
+
+media_folder: "static/images"
+public_folder: "/images"
+
+collections:
+  - name: "posts"
+    label: "文章"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "描述", name: "description", widget: "text", required: false }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "标签", name: "tags", widget: "list", required: false }
+      - { label: "分类", name: "categories", widget: "list", required: false }
+      - { label: "封面图", name: "image", widget: "image", required: false }
+      - { label: "内容", name: "body", widget: "markdown" }
+      - { label: "是否为草稿", name: "draft", widget: "boolean", default: false }
+
+  - name: "links"
+    label: "链接"
+    folder: "content/links"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "链接地址", name: "url", widget: "string" }
+      - { label: "描述", name: "description", widget: "text", required: false }
+      - { label: "分类", name: "category", widget: "string", required: false }
+      - { label: "发布日期", name: "date", widget: "datetime" }
