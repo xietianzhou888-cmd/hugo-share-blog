@@ -1,0 +1,42 @@
+baseURL = "https://xietianzhou888-cmd.github.io/"
+languageCode = "zh-Hans"
+title = "橙子解说个人博客"
+theme = "etch"
+
+# 输出配置
+[outputs]
+home = ["HTML", "RSS"]
+
+# 菜单配置
+[[menu.main]]
+name = "首页"
+url = "/"
+weight = 10
+
+[[menu.main]]
+name = "所有分享"
+url = "/posts/"
+weight = 20
+
+# 分页配置
+[pagination]
+pagerSize = 10
+
+# 参数配置
+[params]
+description = "主要给大家分享好用的网络跟最新的AI相关知识"
+author = "橙子解说"
+subtitle = "这里是橙子解说"
+email = "xietianzhou888@gmail.com"
+
+# 首页显示最新文章数
+homeArticlesLimit = 10
+
+# 自定义描述
+customAbout = """
+大家好，这里是橙子解说
+
+主要给大家分享好用的网络跟最新的AI相关知识。
+我们每周都会更新最新的内容。
+别忘了收藏我的博客！
+"""
