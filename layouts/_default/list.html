@@ -1,0 +1,109 @@
+{{ define "main" }}
+<main class="list-page">
+  <h1>{{ .Title }}</h1>
+  {{ if .Params.description }}<p class="description">{{ .Params.description }}</p>{{ end }}
+  
+  <ul class="posts-list">
+    {{ $posts := where .Pages "Section" "posts" }}
+    {{ range $posts }}
+    <li class="post-item">
+      <a href="{{ .Permalink }}" class="post-title">{{ .Title }}</a>
+      <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+      {{ if .Params.description }}
+      <p class="post-desc">{{ .Params.description }}</p>
+      {{ end }}
+      {{ if .Params.tags }}
+      <div class="post-tags">
+        {{ range .Params.tags }}<span class="tag">{{ . }}</span>{{ end }}
+      </div>
+      {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</main>
+
+<style>
+.list-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.list-page h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.posts-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-item {
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-title {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #0066cc;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.post-title:hover {
+  color: #0052a3;
+  text-decoration: underline;
+}
+
+.post-date {
+  color: #999;
+  font-size: 0.9em;
+}
+
+.post-desc {
+  color: #666;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.post-tags {
+  margin-top: 8px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #666;
+  padding: 3px 10px;
+  border-radius: 15px;
+  font-size: 0.85em;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 600px) {
+  .list-page h1 {
+    font-size: 1.5em;
+  }
+  
+  .post-title {
+    font-size: 1.1em;
+  }
+}
+</style>
+{{ end }}
